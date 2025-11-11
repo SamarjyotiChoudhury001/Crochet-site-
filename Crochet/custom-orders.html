@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order custom crochet creations tailored to your preferences. Personalized designs, colors, and sizes available.">
+    <meta name="keywords" content="custom crochet, personalized crochet, crochet orders, bespoke crochet">
+    <title>Custom Orders - Crochet Creations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-orders-page {
+            min-height: 80vh;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 100%);
+        }
+
+        .custom-orders-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .order-form-container {
+            background-color: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px var(--shadow-medium);
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--blush-pink);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--dark-pink);
+            box-shadow: 0 0 0 3px var(--shadow-soft);
+            background-color: white;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, var(--mint-green) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .info-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .info-box i {
+            margin-top: 0.3rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--dark-pink) 0%, #D99FA3 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px var(--shadow-medium);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow-soft);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--dark-pink) 0%, #D99FA3 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .order-form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span>Crochet Creations</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#shop" class="nav-link">Shop</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="custom-orders.html" class="nav-link">Custom Orders</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Orders Page -->
+    <section class="custom-orders-page">
+        <div class="custom-orders-container">
+            <div class="page-header">
+                <h1 class="page-title script-font">Custom Orders</h1>
+                <p class="page-subtitle">Have a vision? Let's bring your custom crochet creation to life! Share your ideas, and we'll create something unique just for you.</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Fill out the form below with your custom requirements</li>
+                    <li><i class="fas fa-check"></i> We'll review your request and get back to you within 24-48 hours</li>
+                    <li><i class="fas fa-check"></i> Once approved, we'll provide a quote and timeline</li>
+                    <li><i class="fas fa-check"></i> Your custom creation will be handcrafted with care</li>
+                    <li><i class="fas fa-check"></i> Delivery typically takes 2-4 weeks depending on complexity</li>
+                </ul>
+            </div>
+
+            <div class="order-form-container">
+                <form id="custom-order-form" class="custom-order-form">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="item-type">Item Type *</label>
+                        <select id="item-type" name="item-type" class="form-select" required>
+                            <option value="">Select an item type</option>
+                            <option value="toy">Toy/Plushie</option>
+                            <option value="bag">Bag/Tote</option>
+                            <option value="hat">Hat/Beanie</option>
+                            <option value="scarf">Scarf/Shawl</option>
+                            <option value="blanket">Blanket/Afghan</option>
+                            <option value="home-decor">Home Décor</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="size">Size/Dimensions</label>
+                        <input type="text" id="size" name="size" class="form-input" placeholder="e.g., Small, Medium, Large, or specific dimensions">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="colors">Preferred Colors *</label>
+                        <input type="text" id="colors" name="colors" class="form-input" required placeholder="e.g., Pastel pink, mint green, cream">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="description">Detailed Description *</label>
+                        <textarea id="description" name="description" class="form-textarea" required placeholder="Please describe your vision, any specific patterns, styles, or details you'd like..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="deadline">Preferred Completion Date</label>
+                        <input type="date" id="deadline" name="deadline" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="budget">Budget Range</label>
+                        <select id="budget" name="budget" class="form-select">
+                            <option value="">Select budget range</option>
+                            <option value="under-50">Under $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-200">$100 - $200</option>
+                            <option value="200-300">$200 - $300</option>
+                            <option value="300-plus">$300+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="additional-notes">Additional Notes or References</label>
+                        <textarea id="additional-notes" name="additional-notes" class="form-textarea" placeholder="Any additional information, inspiration images links, or special requests..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Custom Order Request
+                    </button>
+                </form>
+            </div>
+
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Submit Request</h3>
+                    <p class="step-description">Fill out the form with your custom requirements</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Review & Quote</h3>
+                    <p class="step-description">We'll review and provide a custom quote</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Crafting</h3>
+                    <p class="step-description">Your item is handcrafted with love</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Delivery</h3>
+                    <p class="step-description">Receive your unique creation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Crochet Creations</h3>
+                    <p class="footer-description">Handcrafted with love, one stitch at a time. Creating beautiful crochet pieces that bring joy to your everyday life.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-icon" aria-label="Etsy"><i class="fab fa-etsy"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> hello@crochetcreations.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Artisan City</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Opening Hours</h4>
+                    <p>Monday - Friday: 10:00 AM - 6:00 PM</p>
+                    <p>Saturday: 11:00 AM - 5:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Join Our Crochet Family</h4>
+                    <p class="newsletter-text">Get updates on new patterns, special offers, and crochet tips!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-newsletter">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Crochet Creations. All rights reserved. Made with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/1234567890" class="floating-btn whatsapp-btn" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/crochetcreations" class="floating-btn instagram-btn" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Custom order form submission
+        const customOrderForm = document.getElementById('custom-order-form');
+        if (customOrderForm) {
+            customOrderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Show success message
+                alert('Thank you for your custom order request! We\'ll review it and get back to you within 24-48 hours.');
+                
+                // Reset form
+                this.reset();
+                
+                // Here you would typically send the data to your backend
+                console.log('Custom order submitted:', data);
+            });
+        }
+    </script>
+</body>
+</html>
